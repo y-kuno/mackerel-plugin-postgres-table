@@ -6,6 +6,7 @@ import (
 
 	"fmt"
 	"github.com/jmoiron/sqlx"
+	// PostgreSQL Driver
 	_ "github.com/lib/pq"
 	mp "github.com/mackerelio/go-mackerel-plugin"
 	"strings"
