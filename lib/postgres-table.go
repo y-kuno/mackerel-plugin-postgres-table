@@ -105,7 +105,7 @@ func (p *PostgresTablePlugin) FetchMetrics() (map[string]float64, error) {
 	defer db.Close()
 
 	db = db.Unsafe()
-	rows, err := db.Queryx(fmt.Sprintf("SELECT * FROM pg_stat_user_tables"))
+	rows, err := db.Queryx("SELECT * FROM pg_stat_user_tables")
 	if err != nil {
 		return nil, err
 	}

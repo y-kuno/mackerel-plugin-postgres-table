@@ -1,4 +1,4 @@
-# mackerel-plugin-postgres-table
+# mackerel-plugin-postgres-table [![Build Status](https://travis-ci.org/y-kuno/mackerel-plugin-postgres-table.svg?branch=master)](https://travis-ci.org/y-kuno/mackerel-plugin-postgres-table)
 
 PostgreSQL Table plugin for mackerel.io agent. This repository releases an artifact to Github Releases, which satisfy the format for mkr plugin installer.
 
