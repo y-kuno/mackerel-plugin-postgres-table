@@ -19,6 +19,7 @@ type PostgresTablePlugin struct {
 	User     string
 	Password string
 	Database string
+	Option   string
 	SSLmode  string
 	Timeout  int
 	Prefix   string
@@ -105,8 +106,13 @@ func (p *PostgresTablePlugin) FetchMetrics() (map[string]float64, error) {
 	}
 	defer db.Close()
 
+	var query = "SELECT * FROM pg_stat_user_tables"
+	if p.Option != "" {
+		query = fmt.Sprintf("%s %s", query, p.Option)
+	}
+
 	db = db.Unsafe()
-	rows, err := db.Queryx("SELECT * FROM pg_stat_user_tables")
+	rows, err := db.Queryx(query)
 	if err != nil {
 		return nil, err
 	}
@@ -146,6 +152,7 @@ func Do() {
 	optUser := flag.String("user", "postgres", "Username")
 	optPassword := flag.String("password", os.Getenv("PGPASSEORD"), "Password")
 	optDatabase := flag.String("database", "", "Database")
+	optOption := flag.String("option", "", "Query option")
 	optSSLmode := flag.String("sslmode", "disable", "Whether or not to use SSL")
 	optConnectTimeout := flag.Int("connect-timeout", 5, "Maximum wait for connection, in seconds.")
 	optPrefix := flag.String("metric-key-prefix", "postgres", "Metric key prefix")
@@ -158,6 +165,7 @@ func Do() {
 		User:     *optUser,
 		Password: *optPassword,
 		Database: *optDatabase,
+		Option:   *optOption,
 		SSLmode:  *optSSLmode,
 		Timeout:  *optConnectTimeout,
 		Prefix:   *optPrefix,
