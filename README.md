@@ -11,7 +11,7 @@ mkr plugin install y-kuno/mackerel-plugin-postgres-table
 ## Synopsis
 
 ```shell
-mackerel-plugin-postgres-table [-host=<host>] [-port=<port>] [-user=<user>] [-password=<password>] [-database=<databasename>] [-sslmode=<sslmode>] [-metric-key-prefix=<prefix>]
+mackerel-plugin-postgres-table [-host=<host>] [-port=<port>] [-user=<user>] [-password=<password>] [-database=<databasename>] [-option=<option>] [-sslmode=<sslmode>] [-metric-key-prefix=<prefix>]
 ```
 
 ## Example of mackerel-agent.conf
