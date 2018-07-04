@@ -136,11 +136,11 @@ func (p *PostgresTablePlugin) FetchMetrics() (map[string]float64, error) {
 		metrics["table.row."+stat.RelName+".n_live_tup"] = float64(stat.NLiveTup)
 		metrics["table.row."+stat.RelName+".n_dead_tup"] = float64(stat.NDeadTup)
 		// vacuum
-		metrics["table.row."+stat.RelName+".vacuum_count"] = float64(stat.VacuumCount)
-		metrics["table.row."+stat.RelName+".autovacuum_count"] = float64(stat.AutoVacuumCount)
+		metrics["table.vacuum."+stat.RelName+".vacuum_count"] = float64(stat.VacuumCount)
+		metrics["table.vacuum."+stat.RelName+".autovacuum_count"] = float64(stat.AutoVacuumCount)
 		// analyze
-		metrics["table.row."+stat.RelName+".analyze_count"] = float64(stat.AnalyzeCount)
-		metrics["table.row."+stat.RelName+".autoanalyze_count"] = float64(stat.AutoAnalyzeCount)
+		metrics["table.analyze."+stat.RelName+".analyze_count"] = float64(stat.AnalyzeCount)
+		metrics["table.analyze."+stat.RelName+".autoanalyze_count"] = float64(stat.AutoAnalyzeCount)
 	}
 	return metrics, nil
 }
